@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:is="http://skye.innoveo.com/ws/implementation-type"
+           targetNamespace="http://skye.innoveo.com/ws/generic-ws" elementFormDefault="qualified">
+
+    <xs:import schemaLocation="implementationTypes.xsd"
+               namespace="http://skye.innoveo.com/ws/implementation-type"/>
+
+    <xs:element name="HandleImplementationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Implementation" type="is:implementationType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="HandleImplementationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

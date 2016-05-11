@@ -1,0 +1,1 @@
+mockservicerunner.sh -m "GenericXmlEndpointPortBinding MockService" "generic-ws-soapui-project.xml"
