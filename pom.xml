@@ -13,23 +13,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javac.target>1.7</javac.target>
         <uberjar.name>simple-ws-service</uberjar.name>
-        <skye.version>MASTER-SNAPSHOT</skye.version>
         <jackson.version>2.3.2</jackson.version>
     </properties>
-
-    <distributionManagement>
-        <repository>
-            <id>innoveo-releases</id>
-            <name>Innoveo Releases Repository</name>
-            <url>http://maven.innoveo.com:8081/nexus/content/repositories/libs-releases-local/</url>
-        </repository>
-        <snapshotRepository>
-            <id>innoveo-snapshots</id>
-            <name>Innoveo Snapshots Repository</name>
-            <url>http://maven.innoveo.com:8081/nexus/content/repositories/libs-snapshots-local/</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
 
     <build>
         <plugins>
@@ -106,26 +91,6 @@
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>com.innoveo</groupId>
-            <artifactId>skye-client-integration</artifactId>
-            <version>${skye.version}</version>
-            <type>test-jar</type>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.innoveo</groupId>
-                    <artifactId>skye-client-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.innoveo</groupId>
-                    <artifactId>skye-client-spring</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.innoveo</groupId>
-                    <artifactId>skye-common-spring</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
