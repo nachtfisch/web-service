@@ -35,7 +35,6 @@ public class SimpleWsServer {
             System.out.println("REQUEST: Received echo request. Echoing back with resource object");
             invocationCount++;
             WebServiceResponse echoResponse = new WebServiceResponse();
-            echoResponse.setMessage(echoRequest.getMessage());
             echoResponse.setCustomerList(echoRequest.getCustomerList());
             echoResponse.setResourceObject(new byte[] {1,2,3});
 

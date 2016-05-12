@@ -7,7 +7,6 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "WebServiceResponse", propOrder = {
         "request",
-        "message",
         "customerList",
         "resourceObject"
 })
@@ -15,33 +14,8 @@ public class WebServiceResponse {
 
     @XmlElement(required = true)
     protected String request;
-    protected String message;
     protected List<Customer> customerList;
     protected byte[] resourceObject;
-
-    /**
-     * Gets the value of the message property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * Sets the value of the message property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setMessage(String value) {
-        this.message = value;
-    }
 
     /**
      * Gets the value of the customer property.

@@ -8,29 +8,40 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "",
-        propOrder = {"billingAddress","shippingAddress"})
+        propOrder = {"id","name", "address"})
 @XmlRootElement(name = "customer")
 public class Customer {
 
-    @XmlElement(name = "billing-address", required = true)
-    protected AddressType billingAddress;
+    @XmlElement(required = true)
+    protected String id;
 
-    @XmlElement(name = "shipping-address", required = true)
-    protected AddressType shippingAddress;
+    @XmlElement(required = true)
+    protected String name;
 
-    public AddressType getBillingAddress() {
-        return billingAddress;
+    @XmlElement(required = true)
+    protected String address;
+
+    public String getId() {
+        return id;
     }
 
-    public void setBillingAddress(AddressType value) {
-        this.billingAddress = value;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public AddressType getShippingAddress() {
-        return shippingAddress;
+    public String getName() {
+        return name;
     }
 
-    public void setShippingAddress(AddressType value) {
-        this.shippingAddress = value;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
