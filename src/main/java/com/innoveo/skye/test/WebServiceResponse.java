@@ -1,6 +1,7 @@
 package com.innoveo.skye.test;
 
 import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -15,7 +16,7 @@ public class WebServiceResponse {
     @XmlElement(required = true)
     protected String request;
     protected String message;
-    protected CustomerList customerList;
+    protected List<Customer> customerList;
     protected byte[] resourceObject;
 
     /**
@@ -50,7 +51,7 @@ public class WebServiceResponse {
      *     {@link Customer }
      *
      */
-    public CustomerList getCustomerList() {
+    public List<Customer> getCustomerList() {
         return customerList;
     }
 
@@ -62,7 +63,7 @@ public class WebServiceResponse {
      *     {@link Customer }
      *
      */
-    public void setCustomerList(CustomerList value) {
+    public void setCustomerList(List<Customer> value) {
         this.customerList = value;
     }
 
