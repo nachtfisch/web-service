@@ -4,13 +4,13 @@ import javax.xml.bind.annotation.*;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DynamicEchoResponse", propOrder = {
+@XmlType(name = "WebServiceResponse", propOrder = {
         "request",
         "message",
         "customerList",
         "resourceObject"
 })
-public class DynamicEchoResponse {
+public class WebServiceResponse {
 
     @XmlElement(required = true)
     protected String request;

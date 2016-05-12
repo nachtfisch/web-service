@@ -8,12 +8,12 @@ public class ObjectFactory {
     public ObjectFactory() {
     }
 
-    public DynamicEchoResponse createEchoResponse() {
-        return new DynamicEchoResponse();
+    public WebServiceResponse createEchoResponse() {
+        return new WebServiceResponse();
     }
 
-    public DynamicEchoRequest createEchoRequest() {
-        return new DynamicEchoRequest();
+    public WebServiceRequest createEchoRequest() {
+        return new WebServiceRequest();
     }
 
 }

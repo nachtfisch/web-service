@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DynamicEchoRequest", propOrder = {
+@XmlType(name = "WebServiceRequest", propOrder = {
         "message",
         "customerList",
 })
-public class DynamicEchoRequest {
+public class WebServiceRequest {
 
     @XmlElement(required = true)
     protected String message;
