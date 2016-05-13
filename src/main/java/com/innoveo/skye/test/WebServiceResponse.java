@@ -3,13 +3,13 @@ package com.innoveo.skye.test;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
-@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "WebServiceResponse", propOrder = {
+@XmlType(name = "", propOrder = {
         "request",
         "customerList",
         "resourceObject"
 })
+@XmlRootElement(name = "webServiceResponse")
 public class WebServiceResponse {
 
     @XmlElement(required = true)

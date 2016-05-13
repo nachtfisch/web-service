@@ -7,38 +7,39 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
-@XmlRootElement
+
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "WebServiceRequest", propOrder = {
-        "customerList",
+@XmlType(name = "", propOrder = {
+        "idRepeated",
 })
+@XmlRootElement(name = "webServiceRequest")
 public class WebServiceRequest {
 
     @XmlElement(required = true)
-    protected List<Customer> customerList;
+    protected boolean idRepeated;
 
     /**
-     * Gets the value of the customerList property.
+     * Gets the value of the idRepeated property.
      *
      * @return
      *     possible object is
      *     {@link Customer }
      *
      */
-    public List<Customer> getCustomerList() {
-        return customerList;
+    public boolean getIdRepeated() {
+        return idRepeated;
     }
 
     /**
-     * Sets the value of the customerList property.
+     * Sets the value of the idRepeated property.
      *
      * @param value
      *     allowed object is
      *     {@link Customer }
      *
      */
-    public void setCustomerList(List<Customer> value) {
-        this.customerList = value;
+    public void setIdRepeated(boolean value) {
+        this.idRepeated = value;
     }
 
 }

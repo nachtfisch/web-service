@@ -7,6 +7,9 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.ws.Endpoint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static javax.jws.soap.SOAPBinding.Style.DOCUMENT;
 import static javax.jws.soap.SOAPBinding.Use.LITERAL;
 
@@ -29,16 +32,58 @@ public class SimpleWsServer {
             invocationCount = 0;
         }
 
-        @WebMethod(operationName = "echo", action = "echo")
+        @WebMethod(operationName = "launch", action = "launch")
         public @WebResult(name = "webServiceResponse")
-        WebServiceResponse echo(@WebParam(name = "webServiceRequest") WebServiceRequest echoRequest) {
-            System.out.println("REQUEST: Received echo request. Echoing back with resource object");
+        WebServiceResponse launch(@WebParam(name = "webServiceRequest") WebServiceRequest webServiceRequest) {
+            System.out.println("REQUEST: Received launch request. Echoing back with resource object");
             invocationCount++;
-            WebServiceResponse echoResponse = new WebServiceResponse();
-            echoResponse.setCustomerList(echoRequest.getCustomerList());
-            echoResponse.setResourceObject(new byte[] {1,2,3});
 
-            return echoResponse;
+            WebServiceResponse launchResponse = createResponseData(webServiceRequest.getIdRepeated());
+            launchResponse.setResourceObject(new byte[]{1, 2, 3});
+
+            return launchResponse;
         }
+
+        private WebServiceResponse createResponseData(boolean idRepeated) {
+            WebServiceResponse webServiceResponse = new WebServiceResponse();
+            webServiceResponse.setCustomerList(createCustomersData(idRepeated));
+
+            return webServiceResponse;
+        }
+
+        private List<Customer> createCustomersData(boolean idRepeated) {
+            if (idRepeated) {
+                return createResponseDataWithRepeatedId();
+            }
+            return createResponseDataWithUniqueId();
+        }
+
+        private List<Customer> createResponseDataWithRepeatedId() {
+            List<Customer> customerList = new ArrayList<>();
+            customerList.add(createCustomer("id1", "name1", "address1"));
+            customerList.add(createCustomer("id1", "name2", "address2"));
+            customerList.add(createCustomer("id3", "name3", "address3"));
+
+            return customerList;
+        }
+
+        private List<Customer> createResponseDataWithUniqueId() {
+            List<Customer> customerList = new ArrayList<>();
+            customerList.add(createCustomer("id1", "name1", "address1"));
+            customerList.add(createCustomer("id2", "name2", "address2"));
+            customerList.add(createCustomer("id3", "name3", "address3"));
+
+            return customerList;
+        }
+
+        private Customer createCustomer(String id, String name, String address) {
+            Customer customer = new Customer();
+            customer.setId(id);
+            customer.setName(name);
+            customer.setAddress(address);
+
+            return customer;
+        }
+
     }
 }
