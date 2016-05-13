@@ -17,7 +17,7 @@ the operation name, respectively `fault` or `echo`.
 ## Create jaxb classes
 
 The necessary jaxb classes can be generated using [this](schema.xsd)
-* wsimport http://localhost:12345/test/DynamicWebService/soa-infra/services/travel/TI_WS_Quote/insQuotation?WSDL (service must be running)
+* wsimport http://localhost:12345/test/DynamicWebService?WSDL -keep -B-enableIntrospection (service must be running)
 
 
 ## Definition
