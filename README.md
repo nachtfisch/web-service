@@ -6,13 +6,10 @@ Includes servers for an 'echo' web service in order to test its functionality.
 
 The service will run on port `12345`. Endpoint-url will depend on the host and will be `http://localhost:12345/test/DynamicWebService`
 
-Currently 2 operations are supported. Since both take the same parameter one *has to* specify a soap action which corresponds to
-the operation name, respectively `fault` or `echo`.
-
 One operation is supported, which can be executed through the soap action 'launch':
 
 * `WebServiceResponse launch(WebServiceRequest webServiceRequest)` returns a response with a generated list of customers
-with or without duplicated ids depending on the 'idRepeated' parameter sent through the request
+which size is specified via parameter numberOfCustomers
 and sets a byte array as output with content `byte[]{1,2,3}`
 
 ## WSDL
