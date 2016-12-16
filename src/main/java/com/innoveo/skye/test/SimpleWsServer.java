@@ -17,7 +17,7 @@ public class SimpleWsServer {
 
     public static void main(String[] args) {
         System.out.println("Publishing service");
-        String url = "http://localhost:12345/test/DynamicWebService";
+        String url = "http://0.0.0.0:12345/test/DynamicWebService";
         Endpoint.publish(url, new DynamicClientModelWebServiceEndpoint());
         System.out.println("Service published under '" + url + "'");
         System.out.println("Waiting for requests...");
