@@ -1,14 +1,11 @@
 package com.innoveo.skye.test;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebResult;
-import javax.jws.WebService;
+import javax.jws.*;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.ws.Endpoint;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static javax.jws.soap.SOAPBinding.Style.DOCUMENT;
 import static javax.jws.soap.SOAPBinding.Use.LITERAL;
@@ -17,7 +14,7 @@ public class SimpleWsServer {
 
     public static void main(String[] args) {
         System.out.println("Publishing service");
-        String url = "http://localhost:12345/test/DynamicWebService";
+        String url = "http://0.0.0.0:12345/test/DynamicWebService";
         Endpoint.publish(url, new DynamicClientModelWebServiceEndpoint());
         System.out.println("Service published under '" + url + "'");
         System.out.println("Waiting for requests...");
@@ -38,42 +35,29 @@ public class SimpleWsServer {
             System.out.println("REQUEST: Received launch request. Echoing back with resource object");
             invocationCount++;
 
-            WebServiceResponse launchResponse = createResponseData(webServiceRequest.getIdRepeated());
-            launchResponse.setResourceObject(new byte[]{1, 2, 3});
+            WebServiceResponse launchResponse = createResponseData(webServiceRequest);
 
+            launchResponse.setResourceObject(new byte[]{1, 2, 3});
             return launchResponse;
         }
 
-        private WebServiceResponse createResponseData(boolean idRepeated) {
+        private WebServiceResponse createResponseData(WebServiceRequest webServiceRequest) {
             WebServiceResponse webServiceResponse = new WebServiceResponse();
-            webServiceResponse.setCustomerList(createCustomersData(idRepeated));
+
+            List<Customer> customersData = createCustomersData(webServiceRequest.getNumberOfCustomers());
+            webServiceResponse.setCustomerList(customersData);
 
             return webServiceResponse;
         }
 
-        private List<Customer> createCustomersData(boolean idRepeated) {
-            if (idRepeated) {
-                return createResponseDataWithRepeatedId();
-            }
-            return createResponseDataWithUniqueId();
-        }
-
-        private List<Customer> createResponseDataWithRepeatedId() {
-            List<Customer> customerList = new ArrayList<>();
-            customerList.add(createCustomer("id1", "name1", "address1"));
-            customerList.add(createCustomer("id1", "name2", "address2"));
-            customerList.add(createCustomer("id3", "name3", "address3"));
-
-            return customerList;
-        }
-
-        private List<Customer> createResponseDataWithUniqueId() {
-            List<Customer> customerList = new ArrayList<>();
-            customerList.add(createCustomer("id1", "name1", "address1"));
-            customerList.add(createCustomer("id2", "name2", "address2"));
-            customerList.add(createCustomer("id3", "name3", "address3"));
-
-            return customerList;
+        private List<Customer> createCustomersData(int numberOfCustomers) {
+            return IntStream.range(0, numberOfCustomers)
+                    .map(i -> i + 1)
+                    .mapToObj(i -> createCustomer(
+                            "id" + i,
+                            "name" + i,
+                            "address" + i))
+                    .collect(Collectors.toList());
         }
 
         private Customer createCustomer(String id, String name, String address) {
@@ -84,6 +68,5 @@ public class SimpleWsServer {
 
             return customer;
         }
-
     }
 }
