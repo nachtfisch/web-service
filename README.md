@@ -27,3 +27,7 @@ The necessary jaxb classes can be generated using [this](schema.xsd)
 ## Definition
 * Create index event: https://confluence.innoveo.com/pages/viewpage.action?spaceKey=IS&title=.Create+index+event+v4.32.0
 * Transformation: https://confluence.innoveo.com/display/IS10/Transformation
+
+## Test comment for review steps
+
+Test to work with upsource
